@@ -65,7 +65,7 @@ Fig 5. Data on the MQTT server.
 
 However, I found it meaningless if I only broadcasted the number of the detected motions and stored them in the database. That's because the number would always ascend, and it would be hard to analyse the data and meaningless for visualisation. To figure out this problem, I added a reset function for the number of detected motions to reset the number to 0 per hour. By doing this, We can quickly know when the highest number of motions will be detected and when there will be almost no intruders. Thinking more about it, this can also help optimise the configuration of security deployment because we know when we will need more or less security according to the data regularity. I believe this is the charm of statistical analysis.
 
-![Grafana](E:\Connected Environments\3.CASA0016-Making, Designing & Building Connected Sensor Systems\CASA0016-Multi-purpose-Security-Box\imgs\Grafana.gif)
+![Grafana](.\imgs\Grafana.gif)
 
 Fig 6. The visualisation chart shows the peak time of the number of motions after reset per hour.
 
