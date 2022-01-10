@@ -59,7 +59,7 @@ The workflow of the Multi-purpose Security Box is quite simple. An LDR and a pot
 
 I chose the Arduino UNO WIFI board as my control system to communicate with the Internet through a WIFI connection. First, I built an internet connection to the CE-hub WIFI and Used MQTT to publish the number of detected motions. Subsequently, I created a FluxDB database in Raspberry Pi to preserve the data published from MQTT and visualise them through the Grafana.
 
-<img src=".\imgs\MQTT.gif" style="zoom:100%;" />
+<img src=".\imgs\MQTT.png" style="zoom:100%;" />
 
 Fig 5. Data on the MQTT server.
 
