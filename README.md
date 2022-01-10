@@ -1,4 +1,5 @@
 # CASA0016-Multi-purpose-Security-Box
+
 This is a connected security system prototype designed in CASA0016 by Zixu Cheng.
 
 Author: Zixu Cheng
@@ -29,7 +30,7 @@ Fig 1. Original circuit design.
 
 However, the limitations of this circuit design cannot be ignored. Firstly, it is hard to adjust the threshold, so we cannot start the system for emergency uses whenever needed. What's more, it isn't easy to use and maintain without a visualisation component like LCD to display the operation status of the system[3].
 
-To fix those problems, I add some auxiliary sensors and actuators for the circuit in the next step. I add a potentiometer in the LDR circuit branch to adjust the current manually so that you can activate the system via decreasing the current below the threshold at any time. Moreover, I use an LCD to show the current value in the LDR branch and the status of the system working or not, helping activate the system when using the potentiometer. The number of detected motions is also shown on the LCD. The final circuit is shown in Fig 2.
+To fix those problems, I add some auxiliary sensors and actuators for the circuit in the next step. I add a potentiometer in the LDR circuit branch to adjust the current manually so that you can activate the system via decreasing the current below the threshold at any time. I manually set the threshold to 400mA. Moreover, I use an LCD to show the current value in the LDR branch and the status of the system working or not, helping activate the system when using the potentiometer. The number of detected motions is also shown on the LCD. The final circuit is shown in Fig 2.
 
 <img src=".\imgs\Final circuit.png" style="zoom:20%;" /> <img src=".\imgs\LCD.jpg" style="zoom:20%;" />
 
@@ -53,19 +54,19 @@ For the enclosure, due to the constraints of 3D printing materials and my imprec
 
 ## Workflow
 
-The workflow of the Multi-purpose Security Box is quite simple. An LDR and a potentiometer work together to activate the system. I manually set the threshold to 400mA. The LDR could activate the system after dark, and the potentiometer could activate the system whenever you need. And the LCD screen helps you control the operating status of the security system. After the system works, it detects human movements and accumulates the number in an hour. Whenever motion is detected, the buzzer will alarm, and the red LED light will turn on. The data would also display on the LCD.
+The workflow of the Multi-purpose Security Box is quite simple. An LDR and a potentiometer work together to activate the system. The LDR could activate the system after dark, and the potentiometer could activate the system whenever you need. And the LCD screen helps you control the operating status of the security system. After the system works, it detects human movements and accumulates the number in an hour. Whenever motion is detected, the buzzer will alarm, and the red LED light will turn on. The data would also display on the LCD.
 
 ## Communication and Data consumer
 
 I chose the Arduino UNO WIFI board as my control system to communicate with the Internet through a WIFI connection. First, I built an internet connection to the CE-hub WIFI and Used MQTT to publish the number of detected motions. Subsequently, I created a FluxDB database in Raspberry Pi to preserve the data published from MQTT and visualise them through the Grafana.
 
-<img src=".\imgs\MQTT.png" style="zoom:100%;" />
+<img src=".\imgs\MQTT.png" alt="MQTT" style="zoom:100%;" />
 
 Fig 5. Data on the MQTT server.
 
 However, I found it meaningless if I only broadcasted the number of the detected motions and stored them in the database. That's because the number would always ascend, and it would be hard to analyse the data and meaningless for visualisation. To figure out this problem, I added a reset function for the number of detected motions to reset the number to 0 per hour. By doing this, We can quickly know when the highest number of motions will be detected and when there will be almost no intruders. Thinking more about it, this can also help optimise the configuration of security deployment because we know when we will need more or less security according to the data regularity. I believe this is the charm of statistical analysis.
 
-<img src=".\imgs\Grafana.gif" style="zoom:100%;" />
+<img src=".\imgs\Grafana.gif" alt="Grafana" style="zoom:80%;" />
 
 Fig 6. The visualisation chart shows the peak time of the number of motions after reset per hour.
 
