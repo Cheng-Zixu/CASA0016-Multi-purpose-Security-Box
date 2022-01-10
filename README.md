@@ -39,7 +39,7 @@ Fig 2. Final circuit design and the LCD.
 
 For the physical prototyping, I designed a box to put everything together. I created my box with the help of Fusion 360 and materialised it with the 3D printer in the CE Lab. I use transparent material to print the box because I hope the LDR will not be blocked by light in the box. I also design two suitable windows, one in the front for the PIR sensor to detect warm body motion and the other in the back for the LCD to display information. I didn't design a cover for the box because I wouldn't like the cover to block the light to LDR. It would also be easier for me to control the potentiometer without a cover at that time.
 
-<img src=".\imgs\original box.jpg" style="zoom:10%;" /><img src=".\imgs\3D model.gif" style="zoom:100%;" />
+<img src=".\imgs\original box.jpg" style="zoom:5%;" /><img src=".\imgs\3D model.gif" style="zoom:100%;" />
 
 Fig 3. Box and its 3D Model
 
@@ -59,7 +59,7 @@ The workflow of the Multi-purpose Security Box is quite simple. An LDR and a pot
 
 I chose the Arduino UNO WIFI board as my control system to communicate with the Internet through a WIFI connection. First, I built an internet connection to the CE-hub WIFI and Used MQTT to publish the number of detected motions. Subsequently, I created a FluxDB database in Raspberry Pi to preserve the data published from MQTT and visualise them through the Grafana.
 
-![MQTT](E:\Connected Environments\3.CASA0016-Making, Designing & Building Connected Sensor Systems\CASA0016-Multi-purpose-Security-Box\imgs\MQTT.png)
+![MQTT](.\imgs\MQTT.png)
 
 Fig 5. Data on the MQTT server.
 
