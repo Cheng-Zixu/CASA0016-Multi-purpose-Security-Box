@@ -59,13 +59,13 @@ The workflow of the Multi-purpose Security Box is quite simple. An LDR and a pot
 
 I chose the Arduino UNO WIFI board as my control system to communicate with the Internet through a WIFI connection. First, I built an internet connection to the CE-hub WIFI and Used MQTT to publish the number of detected motions. Subsequently, I created a FluxDB database in Raspberry Pi to preserve the data published from MQTT and visualise them through the Grafana.
 
-![MQTT](.\imgs\MQTT.png)
+<img src=".\imgs\MQTT.gif" style="zoom:100%;" />
 
 Fig 5. Data on the MQTT server.
 
 However, I found it meaningless if I only broadcasted the number of the detected motions and stored them in the database. That's because the number would always ascend, and it would be hard to analyse the data and meaningless for visualisation. To figure out this problem, I added a reset function for the number of detected motions to reset the number to 0 per hour. By doing this, We can quickly know when the highest number of motions will be detected and when there will be almost no intruders. Thinking more about it, this can also help optimise the configuration of security deployment because we know when we will need more or less security according to the data regularity. I believe this is the charm of statistical analysis.
 
-![Grafana](.\imgs\Grafana.gif)
+<img src=".\imgs\Grafana.gif" style="zoom:100%;" />
 
 Fig 6. The visualisation chart shows the peak time of the number of motions after reset per hour.
 
